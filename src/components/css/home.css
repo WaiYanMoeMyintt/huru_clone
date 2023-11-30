@@ -1,0 +1,53 @@
+.home_banner section {
+    height: 100vh;
+}
+.home_flyer{
+    display: block;
+}
+.home_banner_content {
+    background-image: linear-gradient(to top, rgba(0,0,0,.9) 20%,rgba(0,0,0,.8) 40%, rgba(0,0,0,.5)  70%,rgba(0,0,0,.3) 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+}
+.home_banner_content .release{
+    color: var(--font-primary);
+    font-size: .9rem;
+}
+.home_banner_content h1 {
+    color: var(--font-primary);
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    font-weight: 600;
+}
+.home_banner_content .overview p {
+    margin-top: 1rem;
+    color: var(--font-primary);
+    line-height: 2rem;
+    word-break: keep-all;
+    white-space: none;
+}
+.home_banner_content .list{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+}
+.home_banner_content .list .watch_now {
+    display: block;
+    background-color: var(--second-primary);
+    color:var(--font-primary);
+    padding: .6rem 2rem;
+    border-radius: .25rem;
+}
+.list .add_list  {
+    display: block;
+    border: 1px solid  rgb(44, 56, 70);
+    color:var(--font-primary);
+    padding: .6rem 2rem;
+    border-radius: .25rem;
+}

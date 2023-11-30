@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,800;0,6..12,1000;1,6..12,300;1,6..12,500;1,6..12,600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,800;0,6..12,1000;1,6..12,300;1,6..12,500;1,6..12,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+:root {
+  --bg-primary: hsl(225, 15%, 5%);
+  --second-primary: hsl(150, 80%, 50%);
+  --font-primary: hsl(0, 0%, 100%);
+  --second-font-color: hsl(0, 0%, 77%);
+  --second-font-primary-1: hsl(220, 1%, 39%);
+  --second-font-primary-2: hsl(0, 0%, 61%);
+  --second-bg-color: #15161d;
+  --primary-transition: all 0.5s ease-in;
+}
+
+body {
+  /* primary font-family */
+  font-family: 'Nunito Sans', sans-serif;
+  
+  /* secondary font-family */
+  font-family: 'Libre Franklin', sans-serif;
+
+  height: 120vh;
+  width: 100%;  
+
+  background-color: var(--bg-primary);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.4rem;
+}
+
+::-webkit-scrollbar-button {
+  background:#15161d;
+}
+
+::-webkit-scrollbar-track-piece {
+  /* background: #888; */
+  background-color: var(--second-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background:#4c4c4d;
+}
+
+
