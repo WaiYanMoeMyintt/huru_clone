@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import "./css/index.css";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 
 const Upcoming = () => {
   const api =
@@ -52,17 +50,9 @@ const Upcoming = () => {
     loadArr.push(i);
   }
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
   return (
     <div
       className="content_list relative"
-      ref={ref}
-      style={{
-        transform: isInView ? "none" : "translateX(200px)",
-        opacity: isInView ? 1 : 0,
-        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-      }}
     >
       <div className="content_title">
         <h2>Upcoming</h2>

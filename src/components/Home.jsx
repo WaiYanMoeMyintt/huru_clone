@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Movies from "./Movies";
-import { useInView } from "framer-motion";
 import "./css/home.css";
 import left from "../assets/arrow-left.svg";
 import right from "../assets/arrow-right.svg";
 import { Link } from "react-router-dom";
 import { Button, Carousel } from "flowbite-react";
+
 const Home = () => {
   const api =
     "https://api.themoviedb.org/3/movie/upcoming?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US&page=1";
@@ -41,18 +41,11 @@ const Home = () => {
     }
   };
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
   return (
     <>
       <div
         className="h-screen sm:h-64 xl:h-screen 2xl:h-96 home_banner "
-        ref={ref}
-        style={{
-          transform: isInView ? "none" : "translateY(200px)",
-          opacity: isInView ? 1 : 0,
-          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-        }}
+     
       >
         <Carousel slideInterval={5000}>
           {banner.map((movies, index) => (
@@ -71,7 +64,7 @@ const Home = () => {
                 <div className="list">
                   <Link
                     className="watch_now"
-                    to={`/movies/watch/${movies.id}/${movies.original_title}`}
+                    to={`/movies/${movies.id}/${movies.original_title}`}
                   >
                     Watch Now
                   </Link>

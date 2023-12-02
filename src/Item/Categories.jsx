@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./css/categories.css";
 import right from "../assets/right.svg";
 import { Link } from "react-router-dom";
 import { films } from "../data/Flim";
 import { motion } from "framer-motion";
+import { useInView } from "framer-motion"
 const Categories = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
     <div className="huru_categories">
       <div className="huru_title">
@@ -24,8 +27,14 @@ const Categories = () => {
                 scale: 0.8,
                 x: 0,
                 y: 0,
-                rotate: 2,
+                rotate: 3,
                 borderRadius: "100%",
+              }}
+              ref={ref}
+              style={{
+                transform: isInView ? "none" : "translateY(200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
               }}
             >
               <div className="film_control">

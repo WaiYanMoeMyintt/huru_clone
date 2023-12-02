@@ -1,8 +1,8 @@
 .nav_holder {
     background-color:var(--bg-primary);
-    position: relative;
     padding: 1.5rem 1rem;
     border-bottom: 1px solid hsl(230, 8%, 14%);
+    margin-bottom: .15rem;
 }
 .nav_holder .nav_logo a {
     color: var(--second-primary);

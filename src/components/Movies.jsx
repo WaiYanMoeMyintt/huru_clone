@@ -8,6 +8,7 @@ import TodayShow from "../Item/TodayShow";
 import Categories from "../Item/Categories";
 import Poster from "../Item/Poster";
 import Footer from "../Item/Footer";
+
 const Movies = () => {
   return (
     <div

@@ -5,7 +5,6 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import "./css/index.css";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const Recommend = () => {
   const api =

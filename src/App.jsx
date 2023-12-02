@@ -4,6 +4,7 @@ import Navmenu from './components/Navmenu';
 import Home from './components/Home';
 import Movies from './components/Movies';
 import NotFound from './components/NotFound';
+import MovieDetail from './MovieDetail/MovieDetail';
 const App = () => {
   return (
      <BrowserRouter>
@@ -12,6 +13,7 @@ const App = () => {
              <Route path = "/" element = {<Home />} />
              <Route path = "/" element = {<Movies />} />
              <Route path = "*" element = {<NotFound />} />
+             <Route path = "/movies/:id/:name" element = {<MovieDetail />} />
          </Routes>
      </BrowserRouter>
   )
