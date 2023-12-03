@@ -10,6 +10,10 @@ const NavContext = createContext();
 
 const Navmenu = () => {
   const [open, setOpen] = useState(false);
+  const [nav,setNav]    = useState(false);
+  const navMenuLinks = (event)=>{
+       console.log(event.target);
+  }
 
   return (
     <NavContext.Provider value={{ open, setOpen }}>
@@ -31,13 +35,13 @@ const Navmenu = () => {
             <ul>
               {navLinks.map((links, index) => (
                 <li key={index}>
-                  <Link to={`/${links.name}`}>{links.name}</Link>
+                  <Link onClick={() => setOpen((toggle) => !toggle)} to={`/${links.name}`}>{links.name}</Link>
                 </li>
               ))}
             </ul>
-            <div className="login">
+            <Link onClick={() => setOpen((toggle) => !toggle)} to="/auth-success/login-to-account" className="login">
               <button>Login</button>
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
