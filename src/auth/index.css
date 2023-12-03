@@ -1,0 +1,25 @@
+.login_form {
+    /* background-color: var( --second-bg-color); */
+    /* color: var(--font-primary); */
+    border-radius: .5rem;
+    padding: .4rem 0;
+}
+.form_field {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem;
+    border: 1px solid #ccc;
+}
+#em
+.form_field input {
+    display: block;
+    color: var(--font-primary);
+    outline: 1px solid hsl(220, 1%, 57%);
+}
+.form_field input::placeholder{
+    color: #fff;
+}
+.copyright {
+    color: var(--font-primary);
+    display: none;
+}
