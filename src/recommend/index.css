@@ -1,0 +1,209 @@
+.detail_control{
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.detail_control .left {
+    width: 100%;
+    position: relative;
+}
+.detail_control .left img {
+    border-radius: .5rem;
+}
+
+.detail_control .right {
+    padding: 1rem 1.1rem;
+    margin-top: .5rem;
+}
+.detail_control .right h2 {
+    color: var(--font-primary);
+    font-size: 1.45rem;
+    padding-bottom: .5rem;
+}
+.right .tagline{
+    color: var(--font-primary);
+    padding-bottom: .5rem;
+}
+.right .informatio {
+    color: var(--font-primary);
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex: 1;
+    gap:1rem;
+    flex-wrap: wrap;
+}
+.overview {
+    color: var(--font-primary);
+    line-height: 2rem;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+.detail_cast{
+    width: 100%;
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    position: relative;
+    text-align: center;
+}
+.detail_cast::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: var(--second-font-primary);
+    position: absolute;
+    bottom: 0;
+}
+.detail_cast h2 {
+    color: var(--second-font-primary);
+}
+.detail_cast p {
+    color: var(--font-primary);
+    font-size: 0.8rem;
+
+}
+.detail_title h1 {
+    color: var(--font-primary);
+    font-size: 1.15rem;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.cast_content{
+    margin-top: 2rem;
+    padding: 0 0.7rem;
+    position: relative;
+}
+
+.cast_content .cast_title h2 {
+    color: var(--font-primary);
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+.cast_list p {
+    color: var(--font-primary);
+    font-size: 0.8rem;
+}
+.cast_list img {
+    display: block;
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height:100%;
+}
+.not_found{
+    display: block;
+    border-radius: 0.5rem;
+    background-color:var( --second-bg-color);
+    height: 24rem;
+}
+@media screen and (max-width:570px) {
+    .not_found{
+        height: 14rem;
+    }
+}
+.cast_swiper {
+    position: relative;
+}
+.cast_swiper::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: var(--second-font-primary);
+    position: absolute;
+    bottom: 0rem;
+}
+
+
+.video_content{
+    margin-top: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+}
+.video_content .video_title h2 {
+    color: var(--font-primary);
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+.trailers {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+@media only screen and (max-width:570px) {
+    .trailers iframe {
+        width: 100%;
+    }
+}
+.recommend_content {
+    margin-top: 4rem;
+    padding: 0 1.5rem;
+    position: relative;
+    
+}
+.recommend_content::after {
+    content: '';
+    width: 85%;
+    height: 1px;
+    background-color: var(--second-font-primary);
+    position: absolute;
+    bottom: 0rem;
+}
+.recommend_content .recommend_title h2 {
+    color: var(--font-primary);
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+.popularity{
+    font-size: 0.7rem;
+    color: hsl(0, 0%, 37%);;
+}
+
+.detail_lg_movies_list{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: .5rem 2rem;
+    position: absolute;
+    top: 25%;
+}
+.detail_lg_movies_list .poster
+{
+    max-width: 22rem;
+    height: 22rem;
+    cursor: pointer;
+}
+.detail_lg_movies_list .right {
+    margin-left: 2rem;
+    padding: 1rem 1.5rem;
+}
+.right h2 {
+    font-size: 2rem;
+    color: var(--font-primary);
+    padding-bottom: .5rem;
+    font-weight: 500;
+}
+.right .tag_line {
+    color: var(--font-primary);
+    font-size: 1rem;
+    padding-bottom: .5rem;
+}
+.right .lg_information{
+    padding:1rem 0rem;
+}
+.right .lg_overview {
+    line-height: 2rem;
+}

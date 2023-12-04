@@ -7,7 +7,9 @@ import NotFound from './components/NotFound';
 import MovieDetail from './MovieDetail/MovieDetail';
 import Login from './auth/login';
 import Person from "./person/Person"
-
+import MovieRecommend from './recommend/MovieRecommend';
+import SeriesDetail from './SeriesDetail/SeriesDetail';
+import SeriesRecommend from './recommend/SeriesRecommend';
 const App = () => {
   return (
      <BrowserRouter>
@@ -17,8 +19,11 @@ const App = () => {
              <Route path = "/" element = {<Movies />} />
              <Route path = "*" element = {<NotFound />} />
              <Route path = "/movies/:id/:name" element = {<MovieDetail />} />
+             <Route path = "/series/:id/:name" element = {<SeriesDetail />} />
              <Route path = "/auth-success/login-to-account" element = {<Login />} />
              <Route path="/credit/:id/:name" element = {<Person />}/>
+             <Route path="/entertainment/recommendation/:id/:name" element = {<MovieRecommend />}/>
+             <Route path="/tv-shows/recommendation/:id/:name" element = {<SeriesRecommend />}/>
          </Routes>
      </BrowserRouter>
   )

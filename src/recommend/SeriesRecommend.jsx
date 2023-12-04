@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import imdb from "../assets/imdb.png";
-import "./movieDetail.css";
-import Cast from "./Cast";
-import Trailer from "./Trailer";
-import Recommend from "./Recommend";
+import "./index.css";
+import Cast from "../SeriesDetail/Cast"
+import Trailer from "../SeriesDetail/Trailer";
+import Recommend from "../SeriesDetail/Recommend";
 import Footer from "../Item/Footer";
-const Detail = () => {
+const SeriesRecommend = () => {
   const { id, name } = useParams();
   const imgUrl = "https://image.tmdb.org/t/p/original/";
-  const api = `https://api.themoviedb.org/3/movie/${id}?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US'`;
+  const api = `https://api.themoviedb.org/3/tv/${id}?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US`;
   const img = "https://image.tmdb.org/t/p/w500/";
-  const creditAPI = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US%27`;
+  const creditAPI = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US%27`;
   const [detail, setDetail] = useState();
   const [credit, setCredit] = useState([]);
 
@@ -65,7 +65,7 @@ const Detail = () => {
               <p className="tagline text-center">{detail.tagline}</p>
 
               <div className="informatio gap-2 flex justify-around items-center flex-1">
-                <p>{detail.release_date.slice(0, 4)}</p>
+                <p>{detail.first_air_date.slice(0, 4)}</p>
                 <p>{detail.runtime}min</p>
                 {detail.genres.map((items) => (
                   <Link to={`/categories/${items.id}/${items.name}`}  key={items.id}>
@@ -114,7 +114,7 @@ const Detail = () => {
                   <i className="tag_line">{detail.tagline}</i>
 
                   <div className="informatio lg_information gap-2 flex">
-                    <p>{detail.release_date.slice(0, 4)}</p>
+                    <p>{detail.first_air_date.slice(0, 4)}</p>
                     <p>{detail.runtime}min</p>
                     {detail.genres.map((items) => (
                       <Link  to={`/categories/${items.id}/${items.name}`} key={items.id}>
@@ -135,7 +135,7 @@ const Detail = () => {
           ) 
           : (
             <div>
-              <h1></h1>
+              <h1>Movie not found </h1>
             </div>
           )}
         </div>
@@ -160,4 +160,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default SeriesRecommend;

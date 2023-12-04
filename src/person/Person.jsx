@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
+import { motion, useScroll } from "framer-motion";
 import "./index.css";
 const Person = () => {
   const { id, name } = useParams();
@@ -12,6 +13,7 @@ const Person = () => {
 
   const [person, setPerson] = useState([]);
   const [credit, setCredit] = useState([]);
+  const { scrollYProgress } = useScroll();
 
   // fetch the personal information data
   useEffect(() => {
@@ -30,18 +32,21 @@ const Person = () => {
   // fetch the creditMovies Data
   useEffect(() => {
     const fetchMovies = async () => {
-       try {
+      try {
         const requestPerson = await fetch(creditMovies);
-      const responseData = await requestPerson.json();
-      setCredit(responseData.cast);
-       }
-       catch(err) {
-            return err.message;
-       }
+        const responseData = await requestPerson.json();
+        setCredit(responseData.cast);
+      } catch (err) {
+        return err.message;
+      }
     };
     fetchMovies();
   }, [credit]);
 
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
   return (
     <main>
       <article className="person_content">
@@ -98,7 +103,7 @@ const Person = () => {
 
           <div className="acting_content">
             {credit &&
-              credit.map((movies) => (
+              credit.map((movies, index) => (
                 <Link
                   to={`/movies/${movies.id}/${movies.original_title}`}
                   className="acting_movies"
@@ -110,14 +115,25 @@ const Person = () => {
                       <p>Not Availabile</p>
                     </div>
                   ) : (
-                    <div className="acting_movies">
+                    <motion.div
+                      className="acting_movies"
+                      variants={variants}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{
+                        delay: index * 0.55,
+                        ease: "easeInOut",
+                        duration: 0.5,
+                      }}
+                      viewport={{ amount: 0 }}
+                    >
                       <img
                         src={
                           imgUrl + (movies.poster_path || movies.backdrop_path)
                         }
                       />
                       <p>{movies.original_title}</p>
-                    </div>
+                    </motion.div>
                   )}
                 </Link>
               ))}
