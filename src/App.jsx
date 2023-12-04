@@ -10,6 +10,7 @@ import Person from "./person/Person"
 import MovieRecommend from './recommend/MovieRecommend';
 import SeriesDetail from './SeriesDetail/SeriesDetail';
 import SeriesRecommend from './recommend/SeriesRecommend';
+import MovieCategory from './pages/MovieCategory';
 const App = () => {
   return (
      <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => {
              <Route path="/credit/:id/:name" element = {<Person />}/>
              <Route path="/entertainment/recommendation/:id/:name" element = {<MovieRecommend />}/>
              <Route path="/tv-shows/recommendation/:id/:name" element = {<SeriesRecommend />}/>
+             <Route path="/categories/:id/:name" element = {<MovieCategory />}/>
          </Routes>
      </BrowserRouter>
   )
