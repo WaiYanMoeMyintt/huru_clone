@@ -5,12 +5,16 @@ import Home from './components/Home';
 import Movies from './components/Movies';
 import NotFound from './components/NotFound';
 import MovieDetail from './MovieDetail/MovieDetail';
-import Login from './auth/login';
+import Login from './auth/Login';
 import Person from "./person/Person"
 import MovieRecommend from './recommend/MovieRecommend';
 import SeriesDetail from './SeriesDetail/SeriesDetail';
 import SeriesRecommend from './recommend/SeriesRecommend';
 import MovieCategory from './pages/MovieCategory';
+import Results from './components/Results';
+import Categories from './components/Categories';
+import NavMovie from './components/NavMovie';
+import NavSeries from './components/NavSeries';
 const App = () => {
   return (
      <BrowserRouter>
@@ -26,6 +30,10 @@ const App = () => {
              <Route path="/entertainment/recommendation/:id/:name" element = {<MovieRecommend />}/>
              <Route path="/tv-shows/recommendation/:id/:name" element = {<SeriesRecommend />}/>
              <Route path="/categories/:id/:name" element = {<MovieCategory />}/>
+             <Route path = "/search_results/:name" element = {<Results />}/>
+             <Route path = "/categories" element = {<Categories />}/>
+             <Route path = "/movies" element = {<NavMovie />}/>
+             <Route path = "/series" element = {<NavSeries />}/>
          </Routes>
      </BrowserRouter>
   )
