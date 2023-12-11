@@ -55,7 +55,7 @@ const Results = () => {
                   </Link>
                 </motion.div>
               ) : (
-                <div className="not_found">
+                <div className="not_found text-center flex items-center justify-center text-white">
                   <h2>Unavailable</h2>
                 </div>
               )}
@@ -65,8 +65,8 @@ const Results = () => {
           ))}
         </div>
       ) : (
-        <div className="flex items-center justify-center mt-5 flex-1 ">
-          <h2 className="text-white">Sorry! We couldn't found result for {name}</h2>
+        <div className="flex rounded-md items-center py-12 px-4 justify-center mt-12 flex-1 bg-neutral-900 h-1/3 ">
+          <h2 className="text-white text-2xl">Sorry! We couldn't found result in our server.</h2>
         </div>
       )}
     </div>

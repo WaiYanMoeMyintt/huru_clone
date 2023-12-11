@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import search from "../assets/search.svg";
-
+import "./css/results.css";
 const Search = () => {
   const navLinks = [
     {
@@ -27,6 +27,8 @@ const Search = () => {
   };
 
   return (
+
+    // for desktop
     <div className="nav_holder nav_large_content hidden lg:flex justify-between items-center">
       <div className="nav_logo">
         <Link to="/">huru</Link>
@@ -44,7 +46,7 @@ const Search = () => {
             type="text"
             placeholder="Search movies or series..."
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e)=> setSearchValue(e.target.value)}
           />
           <button onClick={searchMoviesData} type="submit">
             <img src={search} alt="search" />

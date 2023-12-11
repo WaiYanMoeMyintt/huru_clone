@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import "./css/index.css";
 import { Link } from "react-router-dom";
+import { motion, useScroll } from "framer-motion";
 
 const Recommend = () => {
   const api =
@@ -50,6 +51,11 @@ const Recommend = () => {
     loadArr.push(i);
   }
 
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
     <div className="content_list relative">
       <div className="content_title">
@@ -58,7 +64,7 @@ const Recommend = () => {
       {!load ? (
         <div className="loading">
           {loadArr.map((number, index) => (
-              <div className="loading_item" key={index}></div>
+            <div className="loading_item" key={index}></div>
           ))}
         </div>
       ) : (
@@ -72,42 +78,54 @@ const Recommend = () => {
         >
           {popular.map((items, index) => (
             <SwiperSlide key={items.id}>
-              <Link to={`/series/${items.id}/${items.original_name}`}>
-                <div className="poster">
-                  <img
-                    src={imgUrl + items.poster_path}
-                    alt={items.original_title}
-                  />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{
+                  delay: index * 0.6,
+                  ease: "easeInOut",
+                  duration: 0.5,
+                }}
+                viewport={{ amount: 0 }}
+              >
+                <Link to={`/series/${items.id}/${items.original_name}`}>
+                  <div className="poster">
+                    <img
+                      src={imgUrl + items.poster_path}
+                      alt={items.original_title}
                     />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
-                    />
-                  </svg>
-                  <p className="vote">{items.vote_average}</p>
-                </div>
-                <div className="detail">
-                  <div className="detail_info">
-                    <p>{items.first_air_date.slice(0,4)}</p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+                      />
+                    </svg>
+                    <p className="vote">{items.vote_average}</p>
                   </div>
-                  <div className="detail_title">
-                    <h2>{items.original_name}</h2>
+                  <div className="detail">
+                    <div className="detail_info">
+                      <p>{items.first_air_date.slice(0, 4)}</p>
+                    </div>
+                    <div className="detail_title">
+                      <h2>{items.original_name}</h2>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>

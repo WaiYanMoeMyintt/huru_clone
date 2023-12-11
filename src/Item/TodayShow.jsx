@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import "./css/index.css";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 const Recommend = () => {
   const api =
@@ -46,6 +46,11 @@ const Recommend = () => {
     fetchData(api);
   }, []);
 
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   let loadArr = [];
   for (let i = 1; i < 6; i++) {
     loadArr.push(i);
@@ -73,6 +78,15 @@ const Recommend = () => {
         >
           {popular.map((items, index) => (
             <SwiperSlide key={items.id}>
+            <motion.div  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{
+                    delay: index * 0.6,
+                    ease: "easeInOut",
+                    duration: 0.5,
+                  }}
+                  viewport={{ amount: 0 }}>
               <Link to={`/series/${items.id}/${items.original_name}`}>
                 <div className="poster">
                   <img
@@ -109,6 +123,7 @@ const Recommend = () => {
                   </div>
                 </div>
               </Link>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>

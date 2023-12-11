@@ -17,9 +17,9 @@ const Navmenu = () => {
 
   const searchMoviesData = (e) => {
     e.preventDefault();
-    setSearchValue(e.target.value);
     navigate(`/search_results/${searchValue}`);
   };
+
 
   return (
     <NavContext.Provider value={{ open, setOpen }}>
@@ -30,14 +30,14 @@ const Navmenu = () => {
         >
           <Nav />
           <div className="menu_active_holder">
-            <form onSubmit={() => setOpen((toggle) => !toggle)} className="menu_form">
+            <form method="POST" onSubmit={() => setOpen((toggle) => !toggle)} className="menu_form">
               <input
                 type="text"
                 value={searchValue}
                 placeholder="Search movies or series..."
-                onChange={searchMoviesData}
+                onChange={(e)=> setSearchValue(e.target.value)}
               />
-              <button onSubmit={() => setOpen((toggle) => !toggle)}>
+              <button onClick={searchMoviesData}>
                 <img src={search} alt="search" />
               </button>
             </form>

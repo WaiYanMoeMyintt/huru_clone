@@ -51,7 +51,7 @@ const Home = () => {
           {banner.map((movies, index) => (
             <section key={index}>
               <img
-                className="home_flyer"
+                className="home_flyer w-full"
                 src={imageBanner + movies.poster_path}
                 alt={movies.original_title}
               />
