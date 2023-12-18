@@ -58,11 +58,11 @@ const Results = () => {
                 </motion.div>
               ) : (
                 <div className="not_found text-white">
-                  <h2>Unavailable</h2>
+                  <h2 className = 'text-white'>Unavailable</h2>
                 </div>
               )}
               <p>{items.release_date.slice(0, 4)}</p>
-              <h1>{items.original_title}</h1>
+              <h1 className="mt-2.5 text-base">{items.original_title}</h1>
             </div>
           ))}
         </div>

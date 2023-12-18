@@ -49,8 +49,8 @@ const Person = () => {
   };
   return (
     <main>
-      <article className="person_content">
-        <div className="left_person">
+      <article className="person_content flex flex-wrap flex-col justify-start relative">
+        <div className="left_person w-full">
           {person && (
             <img src={imgUrl + person.profile_path} alt={person.name} />
           )}
