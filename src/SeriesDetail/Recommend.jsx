@@ -14,7 +14,9 @@ const Recommend = () => {
   const movieRecommendAPI = `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=1b7c076a0e4849aeefd1f3c429c99a36`;
 
   const [recommend, setRecommend] = useState([]);
-
+// Use formattedName instead of the original name
+const resultNames = recommend.map((item) => item.original_name);
+const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
   const recommendFunc = async () => {
     try {
       if (movieRecommendAPI.length !== 0) {
@@ -45,9 +47,9 @@ const Recommend = () => {
         className="mySwiper popular_swiper"
       >
       {
-        recommend.map((items)=>(
+        recommend.map((items,index)=>(
            <SwiperSlide key={items.id}>
-               <Link target="_blank" to  = {`/tv-shows/recommendation/${items.id}/${items.original_name}`}>
+               <Link target="_blank" to  = {`/tv-shows/recommendation/${items.id}/${formattedNames[index]}`}>
                <div className="poster">
                    <img  src = {imgUrl + items.poster_path} alt={items.original_name}/>
                    <p className="vote">{Math.round(items.vote_average * 10)/10}</p>

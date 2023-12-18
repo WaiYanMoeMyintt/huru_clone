@@ -18,6 +18,11 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   const imgUrl = "https://image.tmdb.org/t/p/original/";
   const [slidesPerView, setSlidesPerView] = useState(5);
+
+   // Use formattedName instead of the original name
+   const resultNames = cast.map((item) => item.original_name);
+   const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
+
   useEffect(() => {
     const handleResize = () => {
       // Update slidesPerView based on screen width
@@ -69,9 +74,9 @@ const Cast = () => {
           className="mySwiper"
        
       >
-        {cast.map((items) => (
+        {cast.map((items,index) => (
           <SwiperSlide   id = "swiper" className="cast_list w-100 h-100" key={items.id}>
-            <Link to={`/credit/${items.id}/${items.name}`}>
+            <Link to={`/credit/${items.id}/${formattedNames[index]}`}>
               {
                 items.profile_path !== null ? 
                 (<div>

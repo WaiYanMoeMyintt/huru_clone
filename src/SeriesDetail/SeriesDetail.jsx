@@ -8,14 +8,16 @@ import Recommend from "./Recommend";
 import Footer from "../Item/Footer";
 const Detail = () => {
   const { id, name } = useParams();
+  document.title = name;
   const imgUrl = "https://image.tmdb.org/t/p/original/";
   const api = `https://api.themoviedb.org/3/tv/${id}?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US'`;
   const img = "https://image.tmdb.org/t/p/w500/";
   const creditAPI = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=1b7c076a0e4849aeefd1f3c429c99a36&language=en-US%27`;
   const [detail, setDetail] = useState();
   const [credit, setCredit] = useState([]);
-
-  document.title = name;
+// Use formattedName instead of the original name
+  const resultNames = credit.map((item) => item.original_name);
+  const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
 
   const detailFunc = async () => {
     try {
@@ -67,8 +69,8 @@ const Detail = () => {
               <div className="informatio gap-2 flex justify-around items-center flex-1">
                 <p>{detail.first_air_date.slice(0, 4)}</p>
                 <p>{detail.runtime}min</p>
-                {detail.genres.map((items) => (
-                  <Link to={`/categories/${items.id}/${items.name}`}  key={items.id}>
+                {detail.genres.map((items,index) => (
+                  <Link to={`/categories/${items.id}/${formattedNames[index]}`}  key={items.id}>
                     <p className="hover:text-emerald-400 transition-transform">{items.name}</p>
                   </Link>
                 ))}
@@ -116,8 +118,8 @@ const Detail = () => {
                   <div className="informatio lg_information gap-2 flex">
                     <p>{detail.first_air_date.slice(0, 4)}</p>
                     <p>{detail.runtime}min</p>
-                    {detail.genres.map((items) => (
-                      <Link  to={`/categories/${items.id}/${items.name}`} key={items.id}>
+                    {detail.genres.map((items,index) => (
+                      <Link  to={`/categories/${items.id}/${formattedNames[index]}`} key={items.id}>
                         <p className="hover:text-emerald-400 transition-transform">{items.name}</p>
                       </Link>
                     ))}

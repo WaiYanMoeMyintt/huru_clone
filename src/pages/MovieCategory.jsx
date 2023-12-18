@@ -8,6 +8,11 @@ const MovieCategory = () => {
   const imgUrl = "https://image.tmdb.org/t/p/original/";
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Use formattedName instead of the original name
+  const resultNames = movies.map((item) => item.original_title);
+  const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
+
   useEffect(() => {
     const movieCategories = async () => {
       try {
@@ -51,7 +56,7 @@ const MovieCategory = () => {
                 }}
                 viewport={{ amount: 0 }}
               >
-                <Link to={`/movies/${items.id}/${items.original_title}`}>
+                <Link key = {index} to={`/movies/${items.id}/${formattedNames[index]}`}>
                   <img
                     src={imgUrl + items.poster_path}
                     alt={items.original_title}

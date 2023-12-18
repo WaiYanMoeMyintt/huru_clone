@@ -15,6 +15,11 @@ const Recommend = () => {
   const [slidesPerView, setSlidesPerView] = useState(5);
   const [load, setLoad] = useState(false);
 
+
+  // Use formattedName instead of the original name
+const resultNames = popular.map((item) => item.original_name);
+const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -89,7 +94,7 @@ const Recommend = () => {
                 }}
                 viewport={{ amount: 0 }}
               >
-                <Link to={`/series/${items.id}/${items.original_name}`}>
+                <Link to={`/series/${items.id}/${formattedNames[index]}`}>
                   <div className="poster">
                     <img
                       src={imgUrl + items.poster_path}

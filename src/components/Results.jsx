@@ -8,6 +8,11 @@ const Results = () => {
   const api = `https://api.themoviedb.org/3/search/movie?api_key=1b7c076a0e4849aeefd1f3c429c99a36&query=${name}`;
   const posterURL = "https://image.tmdb.org/t/p/w500";
   const [result, setResults] = useState([]);
+
+  // Use formattedName instead of the original name
+  const resultNames = result.map((item) => item.original_title);
+  const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
+
   useEffect(() => {
     const searchMovies = async () => {
       try {
@@ -48,7 +53,7 @@ const Results = () => {
                   viewport={{ amount: 0 }}
                   key={items.id}
                 >
-                  <Link to={`/movies/${items.id}/${items.original_title}`}>
+                  <Link to={`/movies/${items.id}/${formattedNames[index]}`}>
                     <img
                       src={posterURL + items.poster_path}
                       alt={items.original_title}

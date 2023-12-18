@@ -12,7 +12,9 @@ const Home = () => {
   const imageBanner = "https://image.tmdb.org/t/p/original/";
   const [banner, setBanner] = useState([]);
   const [current, setCurrent] = useState(0);
-
+  // Use formattedName instead of the original name
+const resultNames = banner.map((item) => item.original_title);
+const formattedNames = resultNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
   //Home Banner အတွက် API Setup လုပ်ခြင်း
   useEffect(() => {
     const homeBanner = async (url) => {
@@ -50,10 +52,10 @@ const Home = () => {
                 <div className="overview">
                   <p>{movies.overview}</p>
                 </div>
-                <div className="list">
+                <div key = {index} className="list">
                   <Link
                     className="watch_now"
-                    to={`/movies/${movies.id}/${movies.original_title}`}
+                    to={`/movies/${movies.id}/${formattedNames[index]}`}
                   >
                     Watch Now
                   </Link>

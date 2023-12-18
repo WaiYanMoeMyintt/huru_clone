@@ -4,17 +4,21 @@ import { motion, useScroll } from "framer-motion";
 import "./index.css";
 const Person = () => {
   const { id, name } = useParams();
+  //default  web page name
+  document.title = name;
   const creditMovies = `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=1b7c076a0e4849aeefd1f3c429c99a36`;
   const personAPI = `https://api.themoviedb.org/3/person/${id}?api_key=1b7c076a0e4849aeefd1f3c429c99a36`;
 
-  document.title = name;
+
   // Set the essential image path
   const imgUrl = "https://image.tmdb.org/t/p/original/";
 
   const [person, setPerson] = useState([]);
   const [credit, setCredit] = useState([]);
   const { scrollYProgress } = useScroll();
-
+ // Use formattedName instead of the original name
+  const creditNames = credit.map((item) => item.original_title);
+  const formattedNames = creditNames.map((name) => name.replaceAll('%20', '-').split(" ").join("-"));
   // fetch the personal information data
   useEffect(() => {
     const fetchPerson = async () => {
@@ -105,9 +109,10 @@ const Person = () => {
             {credit &&
               credit.map((movies, index) => (
                 <Link
-                  to={`/movies/${movies.id}/${movies.original_title}`}
+                  to={`/movies/${movies.id}/${formattedNames[index]}`}
                   className="acting_movies"
                   key={movies.id}
+                  target="_blank"
                 >
                   {movies.poster_path === null &&
                   movies.backdrop_path === null ? (
@@ -131,7 +136,7 @@ const Person = () => {
                         src={
                           imgUrl + (movies.poster_path || movies.backdrop_path)
                         }
-                        className = "rounded-lg"
+                        className="rounded-lg"
                       />
                       <p>{movies.original_title}</p>
                     </motion.div>
