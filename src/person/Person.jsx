@@ -131,6 +131,7 @@ const Person = () => {
                         src={
                           imgUrl + (movies.poster_path || movies.backdrop_path)
                         }
+                        className = "rounded-lg"
                       />
                       <p>{movies.original_title}</p>
                     </motion.div>
