@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./css/results.css";
 import { motion, useScroll } from "framer-motion";
+import error from "../assets/error.png";
 const Results = () => {
   const { id, name } = useParams();
   const api = `https://api.themoviedb.org/3/search/movie?api_key=1b7c076a0e4849aeefd1f3c429c99a36&query=${name}`;
@@ -32,7 +33,7 @@ const Results = () => {
       </div>
       {result.length !== 0 ? (
         <div className="results_content">
-          {result.map((items,index) => (
+          {result.map((items, index) => (
             <div className="detail_results">
               {items.poster_path !== null ? (
                 <motion.div
@@ -51,11 +52,12 @@ const Results = () => {
                     <img
                       src={posterURL + items.poster_path}
                       alt={items.original_title}
+                      className="rounded-lg"
                     />
                   </Link>
                 </motion.div>
               ) : (
-                <div className="not_found text-center flex items-center justify-center text-white">
+                <div className="not_found text-white">
                   <h2>Unavailable</h2>
                 </div>
               )}
@@ -65,8 +67,8 @@ const Results = () => {
           ))}
         </div>
       ) : (
-        <div className="flex rounded-md items-center py-12 px-4 justify-center mt-12 flex-1 bg-neutral-900 h-1/3 ">
-          <h2 className="text-white text-2xl">Sorry! We couldn't found result in our server.</h2>
+        <div className="flex rounded-md items-center py-12 px-4 justify-center mt-12 flex-1  h-1/3 ">
+          <img src={error} alt={"404 error"} />
         </div>
       )}
     </div>

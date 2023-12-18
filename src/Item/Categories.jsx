@@ -11,7 +11,7 @@ const Categories = () => {
   return (
     <div className="huru_categories">
       <div className="huru_title">
-        <h2>Choose the types of Films You liked</h2>
+        <h2 className="lg:text-2xl md:text-sm ">Choose the types of Films You liked</h2>
       </div>
 
       <div className="film_list">

@@ -29,18 +29,7 @@ const Home = () => {
     homeBanner(api);
   }, []);
 
-  const previousSlide = () => {
-    if (current > 0) {
-      setCurrent((prev) => prev - 1);
-    }
-  };
-
-  const nextSlide = () => {
-    if (current < 4) {
-      setCurrent((prev) => prev + 1);
-    }
-  };
-
+ 
   return (
     <>
       <div

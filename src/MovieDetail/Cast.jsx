@@ -54,7 +54,7 @@ const Cast = () => {
   };
   useEffect(() => {
     castFunc();
-  }, [name]);
+  }, []);
   return (
     <div className="cast_content">
       <div className="cast_title lg:w-52 md:w-full">
@@ -63,17 +63,14 @@ const Cast = () => {
 
       <Swiper
         slidesPerView={slidesPerView}
-        spaceBetween={10}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay]}
-        className="cast_swiper"
+          spaceBetween={20}
+          navigation={true}
+          modules={[Navigation,Autoplay]}
+          className="mySwiper"
+       
       >
         {cast.map((items) => (
-          <SwiperSlide className="cast_list w-100 h-100" key={items.id}>
+          <SwiperSlide   id = "swiper" className="cast_list w-100 h-100" key={items.id}>
             <Link to={`/credit/${items.id}/${items.name}`}>
               {
                 items.profile_path !== null ? 

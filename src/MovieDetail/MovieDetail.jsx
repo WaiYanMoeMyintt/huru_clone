@@ -23,7 +23,6 @@ const Detail = () => {
         const fetchData = await fetch(api);
         const responseData = await fetchData.json();
         setDetail(responseData);
-        console.log(responseData);
       }
     } catch (err) {
       return err.message;
