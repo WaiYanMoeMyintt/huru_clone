@@ -29,15 +29,15 @@ const Navmenu = () => {
           className={!open ? "nav_menu_active" : "nav_menu_active nav_active"}
         >
           <Nav />
-          <div className="menu_active_holder">
-            <form method="POST" onSubmit={() => setOpen((toggle) => !toggle)} className="menu_form">
+          <div onSubmit={searchMoviesData} className="menu_active_holder lg:hidden md:flex flex-col">
+            <form onSubmit={() => setOpen((toggle) => !toggle)}  className="menu_form">
               <input
                 type="text"
                 value={searchValue}
                 placeholder="Search movies or series..."
                 onChange={(e)=> setSearchValue(e.target.value)}
               />
-              <button onClick={searchMoviesData}>
+              <button onClick={console.log("fuck")}>
                 <img src={search} alt="search" />
               </button>
             </form>
@@ -54,11 +54,11 @@ const Navmenu = () => {
               ))}
             </ul>
             <Link
-              onClick={() => setOpen((toggle) => !toggle)}
+              onClick={() => setOpen((toggle) => !toggle)} 
               to="/auth-success/login-to-account"
               className="login"
             >
-              <button>Login</button>
+              <button >Login</button>
             </Link>
           </div>
         </div>
@@ -72,7 +72,7 @@ const Nav = () => {
 
   return (
     <>
-      <div className="nav_holder lg:hidden nav_mobile flex flex-1 justify-between items-center">
+      <div className="nav_holder lg:hidden  nav_mobile flex flex-1 justify-between items-center">
         <div className="nav_logo">
           <Link to="/">huru</Link>
         </div>
