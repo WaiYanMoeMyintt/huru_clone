@@ -41,7 +41,7 @@ const Footer = () => {
           ))}
         </div>
         <div className="footer_description">
-          <p className="copyright_title">Copyright © ${currentYear}huru, Inc.</p>
+          <p className="copyright_title">Copyright © {currentYear}huru, Inc.</p>
           <p>
             Huru is a registered trademark of huru, Inc. All rights reserved.
           </p>
